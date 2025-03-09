@@ -1,0 +1,4 @@
+https://raw.githubusercontent.com/FreddieThePebble/QRCodeGame/refs/heads/main/scanresults/LV4.png lv4 scan result
+still got to create qr code
+
+answer is x≈3
