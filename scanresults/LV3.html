@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Test</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #title {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        #number {
+            font-size: 96px;
+            font-weight: bold;
+            margin-top: 20%;
+        }
+    </style>
+</head>
+<body>
+    <div id="title">Memory Test</div>
+    <div id="number">6624280</div>
+
+    <script>
+        setTimeout(function() {
+            document.getElementById('number').style.display = 'none';
+        }, 1200); // 1.2 seconds
+    </script>
+</body>
+</html>
