@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Image with Footer</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        #bouncingImage {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+        }
+        footer {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+        input[type="text"] {
+            padding: 5px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <img id="bouncingImage" src="https://raw.githubusercontent.com/FreddieThePebble/QRCodeGame/refs/heads/main/qr-codes/LV1.png" alt="Bouncing Image">
+    
+    <footer>
+        <p>What is the title of the linked YouTube video?</p>
+        <input type="text" id="ytTitleInput" placeholder="Type here">
+        <button onclick="checkInput()">Submit</button>
+    </footer>
+
+    <script>
+        const image = document.getElementById("bouncingImage");
+        let xPos = 0;
+        let yPos = 0;
+        let xSpeed = 2;
+        let ySpeed = 2;
+
+        function moveImage() {
+            const imageWidth = image.width;
+            const imageHeight = image.height;
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            xPos += xSpeed;
+            yPos += ySpeed;
+
+            // Bounce off all walls, including the footer
+            if (xPos + imageWidth >= windowWidth || xPos <= 0) {
+                xSpeed = -xSpeed;
+            }
+
+            if (yPos + imageHeight >= windowHeight - 50 || yPos <= 0) { // 50px for the footer
+                ySpeed = -ySpeed;
+            }
+
+            image.style.left = `${xPos}px`;
+            image.style.top = `${yPos}px`;
+
+            requestAnimationFrame(moveImage);
+        }
+
+        moveImage();
+
+        function checkInput() {
+            const userInput = document.getElementById("ytTitleInput").value;
+
+            if (userInput.toLowerCase() === "nothing") {
+                window.location.href = "https://www.example.com"; // Redirect if "Nothing" is typed
+            } else {
+                window.location.href = "https://www.example2.com"; // Redirect to a different URL if input is provided
+            }
+        }
+    </script>
+</body>
+</html>
