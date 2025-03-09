@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR-Code Game</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+        #bouncingImage {
+            position: absolute;
+            width: 150px; /* Increased size */
+            height: 150px; /* Increased size */
+            transform-origin: center;
+        }
+        footer {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+        input[type="text"] {
+            padding: 5px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <img id="bouncingImage" src="https://raw.githubusercontent.com/FreddieThePebble/QRCodeGame/refs/heads/main/qr-codes/LV2.png" alt="Rotating Image">
+    
+    <footer>
+        <p>What's the hex of the linked colour?</p>
+        <input type="text" id="ytTitleInput" placeholder="Type here">
+        <button onclick="checkInput()">Submit</button>
+    </footer>
+
+    <script>
+        const image = document.getElementById("bouncingImage");
+        let rotationAngle = 0;
+
+        function rotateImage() {
+            rotationAngle += 2; // Increase the angle by 2 degrees per frame
+            image.style.transform = `rotate(${rotationAngle}deg)`; // Apply the rotation transform
+
+            requestAnimationFrame(rotateImage); // Continue the rotation
+        }
+
+        rotateImage();
+
+        function checkInput() {
+            const userInput = document.getElementById("ytTitleInput").value;
+
+            if (userInput.toLowerCase() === "#0c8bce") {
+                window.location.href = "https://freddiethepebble.github.io/QRCodeGame/levels/LV3"; // Redirect if correct hex is typed
+            } else {
+                window.location.href = "https://freddiethepebble.github.io/QRCodeGam"; // Redirect to a different URL if input is incorrect
+            }
+        }
+    </script>
+</body>
+</html>
